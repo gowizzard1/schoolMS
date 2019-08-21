@@ -29,7 +29,7 @@ SECRET_KEY = '@*8jf1w)zw#mw-se1pfpn=!bj&oyv4_=o&p7xy8008_1p5punk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://msschool.herokuapp.com/']
 
 
 # Application definition
