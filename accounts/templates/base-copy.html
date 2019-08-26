@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          {% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/style.css'%}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/awesome-fonts.css'%}">
+    <title>MSMS</title>
+
+<style>
+</style>
+</head>
+<body><br>
+  <diV class="container-fluid">
+  <div class="col-lg-12" style="margin-left:5.8%; margin-top:-2%">
+  <nav class="container nav navbar-expand navbar-dark bg-info" >
+    <div class="col-lg-12" style="color:white; font-size:100%">
+      <h2>GLORISA SCHOOL MANAGEMENT SYSTEM</h2>
+      <div class="collapse navbar-collapse" id="navbarExample02" style="float:right">
+        <ul class="navbar-nav mr-auto" >
+             <li class="nav-item">
+            <a style="color:white" class="nav-link" href="{% url 'viewprofile'  %}">Profile</a>
+            </li>
+            <li class="nav-item">
+           <a style="color:white" class="nav-link" href="{% url 'logout'  %}">logout</a>
+           </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+{% block body %}
+{% endblock %}
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+<script>
+    $(function () {
+        $('.datetime-input').datetimepicker({
+            format:'YYYY-MM-DD'
+        });
+    });
+</script>
+</div>
+</body>
+
+</html>
