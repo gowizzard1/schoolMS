@@ -4,7 +4,7 @@
 {% block body %}
 <div class="container" style="margin-left:20%">
 <div  class="col-lg-6 col-offset-8 centered" style="border:1px solid violet">
-<h2> login form</h2>
+<h2> login</h2>
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form|crispy }}
