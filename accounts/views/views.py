@@ -3,7 +3,7 @@ from django.views.generic import CreateView
 from accounts.models import *
 from accounts.forms import *
 
-
+@login_required
 def home(request):
     return render(request, 'accounts/home.html')
 
