@@ -2,7 +2,7 @@ from django.shortcuts import *
 from django.views.generic import CreateView
 from accounts.models import *
 from accounts.forms import *
-from django.contrib.auth.decorators import login_requir
+from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
