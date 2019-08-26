@@ -23,6 +23,7 @@ def logout(request):
 
 # THE CRUD OPERATIONS ON A CLASS MODULE #
 #######################################
+@login_required
 def createclassinformation(request):
     if request.method == "POST":
         form = ClassinformationForm(request.POST)
@@ -34,7 +35,7 @@ def createclassinformation(request):
         context = {'form': form}
         return render(request, 'accounts/Class/createclassinformation.html', context)
 
-
+@login_required
 def editclassinformation(request, pk):
     item = get_object_or_404(Classinformation, id=pk)
     if request.method == "POST":
@@ -46,7 +47,7 @@ def editclassinformation(request, pk):
         form = EditclassinformationForm(instance=item)
         return render(request, 'accounts/Class/editclassinformation.html', {'form': form})
 
-
+@login_required
 def viewclassinformation(request):
     all_info = Classinformation.objects.all()
     context = {'all_info': all_info}
@@ -56,6 +57,7 @@ def viewclassinformation(request):
 #######################################
 # THE CRUD OPERATIONS ON SECTION MODULE #
 #######################################
+@login_required
 def createsectioninformation(request):
     if request.method == "POST":
         form = SectioninformationForm(request.POST)
@@ -67,7 +69,7 @@ def createsectioninformation(request):
         context = {'form': form}
         return render(request, 'accounts/Section/createsectioninformation.html', context)
 
-
+@login_required
 def editsectioninformation(request, pk):
     item = get_object_or_404(Sectioninformation, id=pk)
     if request.method == "POST":
@@ -79,7 +81,7 @@ def editsectioninformation(request, pk):
         form = EditsectioninformationForm(instance=item)
         return render(request, 'accounts/Section/editsectioninformation.html', {'form': form})
 
-
+@login_required
 def viewsectioninformation(request):
     all_info = Sectioninformation.objects.all()
     context = {'all_info': all_info}
@@ -89,6 +91,7 @@ def viewsectioninformation(request):
 #######################################
 #   CRUD FOR THE SUBJECT MODULE          #
 #######################################
+@login_required
 def addsubject(request):
     if request.method == "POST":
         form = AddSubjectForm(request.POST)
@@ -100,7 +103,7 @@ def addsubject(request):
         context = {'form': form}
         return render(request, 'accounts/Subject/addsubject.html', context)
 
-
+@login_required
 def editsubject(request, pk):
     item = get_object_or_404(Subjects, id=pk)
     if request.method == "POST":
@@ -112,14 +115,14 @@ def editsubject(request, pk):
         form = EditSubjectForm(instance=item)
         return render(request, 'accounts/Subject/editsubject.html', {'form': form})
 
-
+@login_required
 def deletesubject(request, pk):
     Subjects.objects.filter(id=pk).delete()
     all_info = Subjects.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Subject/viewsubjects.html', context)
 
-
+@login_required
 def viewsubjects(request):
     all_info = Subjects.objects.all()
     context = {'all_info': all_info}
@@ -129,6 +132,7 @@ def viewsubjects(request):
 #######################################
 #   CRUD FOR THE Syllabus MODULE        #
 #######################################
+@login_required
 def addsyllabus(request):
     if request.method == "POST":
         form = AddSyllabusForm(request.POST, request.FILES)
@@ -140,7 +144,7 @@ def addsyllabus(request):
         context = {'form': form}
         return render(request, 'accounts/Syllabus/addsyllabus.html', context)
 
-
+@login_required
 def editsyllabus(request, pk):
     item = get_object_or_404(Syllabus, id=pk)
     if request.method == "POST":
@@ -152,14 +156,14 @@ def editsyllabus(request, pk):
         form = EditSyllabusForm(instance=item)
         return render(request, 'accounts/Syllabus/editsyllabus.html', {'form': form})
 
-
+@login_required
 def deletesyllabus(request, pk):
     Syllabus.objects.filter(id=pk).delete()
     all_info = Syllabus.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Syllabus/viewsyllabus.html', context)
 
-
+@login_required
 def viewsyllabus(request):
     all_info = Syllabus.objects.all()
     context = {'all_info': all_info}
@@ -169,6 +173,7 @@ def viewsyllabus(request):
 ###############################################
 #   CRUD FOR THE HUMAN RESOURCES MANAGER MODULE #
 ###############################################
+@login_required
 def addhumanresource(request):
     if request.method == "POST":
         form = AddHumanResourceForm(request.POST, request.FILES)
@@ -180,7 +185,7 @@ def addhumanresource(request):
         context = {'form': form}
         return render(request, 'accounts/HumanResource/addhumanresource.html', context)
 
-
+@login_required
 def edithumanresource(request, pk):
     item = get_object_or_404(HumanResource, id=pk)
     if request.method == "POST":
@@ -192,14 +197,14 @@ def edithumanresource(request, pk):
         form = EditHumanResourceForm(instance=item)
         return render(request, 'accounts/HumanResource/edithumanresource.html', {'form': form})
 
-
+@login_required
 def deletehumanresource(request, pk):
     HumanResource.objects.filter(id=pk).delete()
     all_info = HumanResource.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/HumanResource/viewhumanresource.html', context)
 
-
+@login_required
 def viewhumanresource(request):
     all_info = HumanResource.objects.all()
     context = {'all_info': all_info}
@@ -209,6 +214,7 @@ def viewhumanresource(request):
 ###############################################
 ############  CRUD FOR THE ROUTINE #############
 ###############################################
+@login_required
 def addroutine(request):
     if request.method == "POST":
         form = AddRoutineForm(request.POST, request.FILES)
@@ -220,7 +226,7 @@ def addroutine(request):
         context = {'form': form}
         return render(request, 'accounts/Routine/addroutine.html', context)
 
-
+@login_required
 def editroutine(request, pk):
     item = get_object_or_404(Routine, id=pk)
     if request.method == "POST":
@@ -232,14 +238,14 @@ def editroutine(request, pk):
         form = EditRoutineForm(instance=item)
         return render(request, 'accounts/Routine/editroutine.html', {'form': form})
 
-
+@login_required
 def deleteroutine(request, pk):
     Routine.objects.filter(id=pk).delete()
     all_info = Routine.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Routine/viewroutine.html', context)
 
-
+@login_required
 def viewroutine(request):
     all_info = Routine.objects.all()
     context = {'all_info': all_info}
@@ -249,6 +255,7 @@ def viewroutine(request):
 #######################################
 #   CRUD FOR THE ASSIGNMENT MODULE    #
 #######################################
+@login_required
 def addassignment(request):
     if request.method == "POST":
         form = AddAssignmentForm(request.POST, request.FILES)
@@ -260,7 +267,7 @@ def addassignment(request):
         context = {'form': form}
         return render(request, 'accounts/Assignment/addassignment.html', context)
 
-
+@login_required
 def editassignment(request, pk):
     item = get_object_or_404(Assignment, id=pk)
     if request.method == "POST":
@@ -272,14 +279,14 @@ def editassignment(request, pk):
         form = EditAssignmentForm(instance=item)
         return render(request, 'accounts/Assignment/editassignment.html', {'form': form})
 
-
+@login_required
 def deleteassignment(request, pk):
     Assignment.objects.filter(id=pk).delete()
     all_info = Assignment.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Assignment/viewassignment.html', context)
 
-
+@login_required
 def viewassignment(request):
     all_info = Assignment.objects.all()
     context = {'all_info': all_info}
@@ -289,6 +296,7 @@ def viewassignment(request):
 #######################################
 #   CRUD FOR THE EXAM GRADE MODULE    #
 #######################################
+@login_required
 def addexamgrade(request):
     if request.method == "POST":
         form = AddExamGradeForm(request.POST, request.FILES)
@@ -300,7 +308,7 @@ def addexamgrade(request):
         context = {'form': form}
         return render(request, 'accounts/Exam/addexamgrade.html', context)
 
-
+@login_required
 def editexamgrade(request, pk):
     item = get_object_or_404(ExamGrade, id=pk)
     if request.method == "POST":
@@ -312,14 +320,14 @@ def editexamgrade(request, pk):
         form = EditExamGradeForm(instance=item)
         return render(request, 'accounts/Exam/editexamgrade.html', {'form': form})
 
-
+@login_required
 def deleteexamgrade(request, pk):
     ExamGrade.objects.filter(id=pk).delete()
     all_info = ExamGrade.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Exam/viewexamgrade.html', context)
 
-
+@login_required
 def viewexamgrade(request):
     all_info = ExamGrade.objects.all()
     context = {'all_info': all_info}
@@ -329,6 +337,7 @@ def viewexamgrade(request):
 #######################################
 #   CRUD FOR THE EXAM TERM MODULE    #
 #######################################
+@login_required
 def addexamterm(request):
     if request.method == "POST":
         form = AddExamTermForm(request.POST, request.FILES)
@@ -340,7 +349,7 @@ def addexamterm(request):
         context = {'form': form}
         return render(request, 'accounts/Exam/addexamterm.html', context)
 
-
+@login_required
 def editexamterm(request, pk):
     item = get_object_or_404(ExamTerm, id=pk)
     if request.method == "POST":
@@ -352,14 +361,14 @@ def editexamterm(request, pk):
         form = EditExamTermeForm(instance=item)
         return render(request, 'accounts/Exam/editexamterm.html', {'form': form})
 
-
+@login_required
 def deleteexamterm(request, pk):
     ExamTerm.objects.filter(id=pk).delete()
     all_info = ExamTerm.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Exam/viewexamterm.html', context)
 
-
+@login_required
 def viewexamterm(request):
     all_info = ExamTerm.objects.all()
     context = {'all_info': all_info}
@@ -369,6 +378,7 @@ def viewexamterm(request):
 #######################################
 #   CRUD FOR THE EXAM SCHEDULE MODULE    #
 #######################################
+@login_required
 def addexamschedule(request):
     if request.method == "POST":
         form = AddExamScheduleForm(request.POST, request.FILES)
@@ -380,7 +390,7 @@ def addexamschedule(request):
         context = {'form': form}
         return render(request, 'accounts/Exam/addexamschedule.html', context)
 
-
+@login_required
 def editexamschedule(request, pk):
     item = get_object_or_404(ExamSchedule, id=pk)
     if request.method == "POST":
@@ -392,14 +402,14 @@ def editexamschedule(request, pk):
         form = EditExamScheduleForm(instance=item)
         return render(request, 'accounts/Exam/editexamschedule.html', {'form': form})
 
-
+@login_required
 def deleteexamschedule(request, pk):
     ExamSchedule.objects.filter(id=pk).delete()
     all_info = ExamSchedule.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Exam/viewexamschedule.html', context)
 
-
+@login_required
 def viewexamschedule(request):
     all_info = ExamSchedule.objects.all()
     context = {'all_info': all_info}
@@ -409,6 +419,7 @@ def viewexamschedule(request):
 #######################################
 #   CRUD FOR THE EXAM SUGGESTION MODULE    #
 #######################################
+@login_required
 def addexamsuggestion(request):
     if request.method == "POST":
         form = AddExamSuggestionForm(request.POST, request.FILES)
@@ -420,7 +431,7 @@ def addexamsuggestion(request):
         context = {'form': form}
         return render(request, 'accounts/Exam/addexamsuggestion.html', context)
 
-
+@login_required
 def editexamsuggestion(request, pk):
     item = get_object_or_404(ExamSuggestion, id=pk)
     if request.method == "POST":
@@ -432,14 +443,14 @@ def editexamsuggestion(request, pk):
         form = EditExamSuggestionForm(instance=item)
         return render(request, 'accounts/Exam/editexamsuggestion.html', {'form': form})
 
-
+@login_required
 def deleteexamsuggestion(request, pk):
     ExamSuggestion.objects.filter(id=pk).delete()
     all_info = ExamSuggestion.objects.all()
     context = {'all_info': all_info}
     return render(request, 'accounts/Exam/viewexamsuggestion.html', context)
 
-
+@login_required
 def viewexamsuggestion(request):
     all_info = ExamSuggestion.objects.all()
     context = {'all_info': all_info}
@@ -479,7 +490,7 @@ def deletelibrarybook(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Library/viewlibrarybook.html', context)
 
-
+@login_required
 def viewlibrarybook(request):
     all_info = Library.objects.all()
     context = {'all_info': all_info}
@@ -519,7 +530,7 @@ def deletevehicle(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Transport/viewvehicle.html', context)
 
-
+@login_required
 def viewvehicle(request):
     all_info = Transport.objects.all()
     context = {'all_info': all_info}
@@ -559,7 +570,7 @@ def deleteroute(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Transport/viewroute.html', context)
 
-
+@login_required
 def viewroute(request):
     all_info = Route.objects.all()
     context = {'all_info': all_info}
@@ -599,7 +610,7 @@ def deletehostel(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Hostel/viewhostel.html', context)
 
-
+@login_required
 def viewhostel(request):
     all_info = Hostel.objects.all()
     context = {'all_info': all_info}
@@ -639,7 +650,7 @@ def deleteroom(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Hostel/viewhostelroom.html', context)
 
-
+@login_required
 def viewroom(request):
     all_info = HostelRooms.objects.all()
     context = {'all_info': all_info}
@@ -679,7 +690,7 @@ def deletevisitor(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Visitor/viewvisitor.html', context)
 
-
+@login_required
 def viewvisitor(request):
     all_info = VisitorInfor.objects.all()
     context = {'all_info': all_info}
@@ -719,7 +730,7 @@ def deletesalarygrade(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Payroll/viewsalarygrade.html', context)
 
-
+@login_required
 def viewsalarygrade(request):
     all_info = SalaryGrade.objects.all()
     context = {'all_info': all_info}
@@ -759,7 +770,7 @@ def deletediscount(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Accounting/viewdiscount.html', context)
 
-
+@login_required
 def viewdiscount(request):
     all_info = Discount.objects.all()
     context = {'all_info': all_info}
@@ -799,7 +810,7 @@ def deletefeetype(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Accounting/viewfeetype.html', context)
 
-
+@login_required
 def viewfeetype(request):
     all_info = FeeType.objects.all()
     context = {'all_info': all_info}
@@ -839,7 +850,7 @@ def deletefeecollection(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Accounting/feecollection.html', context)
 
-
+@login_required
 def viewfeecollection(request):
     all_info = FeeCollection.objects.all()
     context = {'all_info': all_info}
@@ -879,7 +890,7 @@ def deleteincome(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Accounting/viewincome.html', context)
 
-
+@login_required
 def viewincome(request):
     all_info = Income.objects.all()
     context = {'all_info': all_info}
@@ -919,7 +930,7 @@ def deleteexpenditure(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Accounting/viewexpenditure.html', context)
 
-
+@login_required
 def viewexpenditure(request):
     all_info = Expenditure.objects.all()
     context = {'all_info': all_info}
@@ -959,7 +970,7 @@ def deleteevents(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Events/viewevents.html', context)
 
-
+@login_required
 def viewevents(request):
     all_info = Events.objects.all()
     context = {'all_info': all_info}
@@ -999,7 +1010,7 @@ def deleteincome(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Accounting/viewincome.html', context)
 
-
+@login_required
 def viewincome(request):
     all_info = Income.objects.all()
     context = {'all_info': all_info}
@@ -1039,7 +1050,7 @@ def deleteexpenditure(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Accounting/viewexpenditure.html', context)
 
-
+@login_required
 def viewexpenditure(request):
     all_info = Expenditure.objects.all()
     context = {'all_info': all_info}
@@ -1119,7 +1130,7 @@ def deletenews(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Announcement/viewnews.html', context)
 
-
+@login_required
 def viewnews(request):
     all_info = News.objects.all()
     context = {'all_info': all_info}
@@ -1159,7 +1170,7 @@ def deleteholiday(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Announcement/viewholidays.html', context)
 
-
+@login_required
 def viewholidays(request):
     all_info = Holiday.objects.all()
     context = {'all_info': all_info}
@@ -1199,7 +1210,7 @@ def deleteprofile(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Profile/viewprofile.html', context)
 
-
+@login_required
 def viewprofile(request):
     all_info = Profile.objects.all()
     context = {'all_info': all_info}
@@ -1239,7 +1250,7 @@ def deleteschool(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/School/viewschools.html', context)
 
-
+@login_required
 def viewschools(request):
     all_info = School.objects.all()
     context = {'all_info': all_info}
@@ -1281,7 +1292,7 @@ def deleteteacher(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Teachers/viewteacher.html', context)
 
-
+@login_required
 def viewteachers(request):
     all_info = TeachersInformation.objects.all()
     context = {'all_info': all_info}
@@ -1328,7 +1339,7 @@ def deletestudent(request, pk):
     context = {'all_info': all_info}
     return render(request, 'accounts/Students/viewstudents.html', context)
 
-
+@login_required
 def viewstudents(request):
     all_info = DataStudent.objects.all()
     context = {'all_info': all_info}
@@ -1338,6 +1349,7 @@ def viewstudents(request):
 ################################################
 #         STUDENT ATTENDANCE MODULE               #
 ################################################
+@login_required
 def studentattendance(request):
     time = datetime.now()
     queryset = StudentPresence.objects.all()
@@ -1348,18 +1360,19 @@ def studentattendance(request):
 ################################################
 #         SINGLE STUDENT INFORMATION               #
 ################################################
+@login_required
 def singlestudentdetails(request, pk):
     all_info = DataStudent.objects.filter(id=pk)
     context = {'all_info': all_info}
     return render(request, 'accounts/Students/singlestudentdetails.html', context)
 
-
+@login_required
 def guardianofstudentdetails(request, pk):
     all_info = DataStudent.objects.filter(id=pk)
     context = {'all_info': all_info}
     return render(request, 'accounts/Students/guardianofstudentdetails.html', context)
 
-
+@login_required
 def parentofstudentdetails(request, pk):
     all_info = DataStudent.objects.filter(id=pk)
     context = {'all_info': all_info}
@@ -1369,42 +1382,42 @@ def parentofstudentdetails(request, pk):
     #     STUDENT  VIEWING HIS OR HER CLASS           #
     ################################################
 
-
+@login_required
 def studentsinaclass1(request):
     all_classes = Classinformation.objects.all()
     all_info = DataStudent.objects.filter(Class=all_classes[0])
     context = {'all_info': all_info, 'all_classes': all_classes}
     return render(request, 'accounts/StudentClass/view_form_one_students.html', context)
 
-
+@login_required
 def studentsinaclass2(request):
     all_classes = Classinformation.objects.all()
     all_info = DataStudent.objects.filter(Class=all_classes[1])
     context = {'all_info': all_info}
     return render(request, 'accounts/StudentClass/view_form_two_students.html', context)
 
-
+@login_required
 def studentsinaclass3(request):
     all_classes = Classinformation.objects.all()
     all_info = DataStudent.objects.filter(Class=all_classes[2])
     context = {'all_info': all_info}
     return render(request, 'accounts/StudentClass/view_form_three_students.html', context)
 
-
+@login_required
 def studentsinaclass4(request):
     all_classes = Classinformation.objects.all()
     all_info = DataStudent.objects.filter(Class=all_classes[3])
     context = {'all_info': all_info}
     return render(request, 'accounts/StudentClass/view_form_four_students.html', context)
 
-
+@login_required
 def studentsinaclass5(request):
     all_classes = Classinformation.objects.all()
     all_info = DataStudent.objects.filter(Class=all_classes[4])
     context = {'all_info': all_info}
     return render(request, 'accounts/StudentClass/view_form_five_students.html', context)
 
-
+@login_required
 def studentsinaclass6(request):
     all_classes = Classinformation.objects.all()
     all_info = DataStudent.objects.filter(Class=all_classes[5])
@@ -1415,49 +1428,49 @@ def studentsinaclass6(request):
     #     STUDENT  VIEWING HIS OR HER CLASS SUBJECTS   #
     ################################################
 
-
+@login_required
 def subjectsinaclass1(request):
     all_classes = Classinformation.objects.all()
     all_subjects = Subjects.objects.filter(Class=all_classes[0])
     context = {'all_subjects': all_subjects, 'all_classes': all_classes}
     return render(request, 'accounts/Subject/view_form_one_subjects.html', context)
 
-
+@login_required
 def subjectsinaclass2(request):
     all_classes = Classinformation.objects.all()
     all_subjects = Subjects.objects.filter(Class=all_classes[1])
     context = {'all_subjects': all_subjects, 'all_classes': all_classes}
     return render(request, 'accounts/Subject/view_form_two_subjects.html', context)
 
-
+@login_required
 def subjectsinaclass3(request):
     all_classes = Classinformation.objects.all()
     all_subjects = Subjects.objects.filter(Class=all_classes[2])
     context = {'all_subjects': all_subjects, 'all_classes': all_classes}
     return render(request, 'accounts/Subject/view_form_three_subjects.html', context)
 
-
+@login_required
 def subjectsinaclass4(request):
     all_classes = Classinformation.objects.all()
     all_subjects = Subjects.objects.filter(Class=all_classes[3])
     context = {'all_subjects': all_subjects, 'all_classes': all_classes}
     return render(request, 'accounts/Subject/view_form_four_subjects.html', context)
 
-
+@login_required
 def subjectsinaclass5(request):
     all_classes = Classinformation.objects.all()
     all_subjects = Subjects.objects.filter(Class=all_classes[4])
     context = {'all_subjects': all_subjects, 'all_classes': all_classes}
     return render(request, 'accounts/Subject/view_form_five_subjects.html', context)
 
-
+@login_required
 def subjectsinaclass6(request):
     all_classes = Classinformation.objects.all()
     all_subjects = Subjects.objects.filter(Class=all_classes[5])
     context = {'all_subjects': all_subjects, 'all_classes': all_classes}
     return render(request, 'accounts/Subject/view_form_six_subjects.html', context)
 
-
+@login_required
 def viewsinglesubjectsinclassdetails(request, pk):
     all_info = Subjects.objects.filter(id=pk)
     context = {'all_info': all_info}
