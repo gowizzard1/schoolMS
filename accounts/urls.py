@@ -4,6 +4,7 @@ from accounts.views import views
 urlpatterns = [
     url(r'^$', views.home, name="home"),
     url(r'^login', views.login, name="login"),
+    url(r'^login', views.login_request, name="login"),
     url(r'^createclassinformation', views.createclassinformation, name="createclassinformation"),
     url(r'^editclassinformation/(?P<pk>\d+)', views.editclassinformation, name="editclassinformation"),
     url(r'^viewclassinformation', views.viewclassinformation, name="viewclassinformation"),
